@@ -35,4 +35,11 @@
         android:text="@string/show_table_layout"
         />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_show_custom_view"
+        android:text="@string/show_custom_view"
+        />
+
 </LinearLayout >

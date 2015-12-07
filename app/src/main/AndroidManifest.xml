@@ -20,6 +20,7 @@
         </activity >
         <activity android:name=".AtyEasyStart" />
         <activity android:name=".AtyTableLayout" />
+        <activity android:name=".AtyCustomView" />
     </application >
 
 </manifest >

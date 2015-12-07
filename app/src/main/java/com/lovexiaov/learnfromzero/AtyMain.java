@@ -26,7 +26,10 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
              .setOnClickListener(this);
         super.findViewById(R.id.btn_show_progress_dialog)
              .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_table_layout).setOnClickListener(this);
+        super.findViewById(R.id.btn_show_table_layout)
+             .setOnClickListener(this);
+        super.findViewById(R.id.btn_show_custom_view)
+             .setOnClickListener(this);
     }
 
 
@@ -53,12 +56,22 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
 
             case R.id.btn_show_table_layout:
                 showTableLayout();
+                break;
+
+            case R.id.btn_show_custom_view:
+                showCustomView();
+                break;
 
             default:
 
                 break;
         }
 
+    }
+
+    private void showCustomView() {
+        Intent intent = new Intent(AtyMain.this, AtyCustomView.class);
+        startActivity(intent);
     }
 
     private void showTableLayout() {
