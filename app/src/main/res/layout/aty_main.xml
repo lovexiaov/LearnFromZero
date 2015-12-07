@@ -28,5 +28,11 @@
         android:id="@+id/btn_show_progress_dialog"
         android:text="@string/show_progress_dialog"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_show_table_layout"
+        android:text="@string/show_table_layout"
+        />
 
 </LinearLayout >

@@ -2,6 +2,7 @@ package com.lovexiaov.learnfromzero;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
              .setOnClickListener(this);
         super.findViewById(R.id.btn_show_progress_dialog)
              .setOnClickListener(this);
+        super.findViewById(R.id.btn_show_table_layout).setOnClickListener(this);
     }
 
 
@@ -49,11 +51,19 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
                 showProgressDialog();
                 break;
 
+            case R.id.btn_show_table_layout:
+                showTableLayout();
+
             default:
 
                 break;
         }
 
+    }
+
+    private void showTableLayout() {
+        Intent intent = new Intent(AtyMain.this, AtyTableLayout.class);
+        startActivity(intent);
     }
 
     private void showProgressDialog() {

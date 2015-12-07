@@ -3,4 +3,5 @@
     <string name="start_aty_easy_start">Start AtyEasyStart</string>
     <string name="show_alert_dialog">Show AlertDialog</string>
     <string name="show_progress_dialog">Show ProgressDialog</string>
+    <string name="show_table_layout">Show TableLayout</string>
 </resources >
