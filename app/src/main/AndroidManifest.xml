@@ -22,6 +22,7 @@
         <activity android:name=".AtyTableLayout" />
         <activity android:name=".AtyCustomView" />
         <activity android:name=".AtyListView" />
+        <activity android:name=".AtyFragment" />
     </application >
 
 </manifest >

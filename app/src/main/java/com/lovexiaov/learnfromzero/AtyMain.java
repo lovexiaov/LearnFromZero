@@ -30,7 +30,10 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
              .setOnClickListener(this);
         super.findViewById(R.id.btn_show_custom_view)
              .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_list_view).setOnClickListener(this);
+        super.findViewById(R.id.btn_show_list_view)
+             .setOnClickListener(this);
+        super.findViewById(R.id.btn_show_fragment)
+             .setOnClickListener(this);
     }
 
 
@@ -67,12 +70,20 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
                 showListView();
                 break;
 
+            case R.id.btn_show_fragment:
+                showFragment();
+                break;
 
             default:
 
                 break;
         }
 
+    }
+
+    private void showFragment() {
+        Intent intent = new Intent(AtyMain.this, AtyFragment.class);
+        startActivity(intent);
     }
 
     private void showListView() {
