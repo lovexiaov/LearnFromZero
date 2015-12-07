@@ -41,5 +41,11 @@
         android:id="@+id/btn_show_custom_view"
         android:text="@string/show_custom_view"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_list_view"
+        android:id="@+id/btn_show_list_view"
+        />
 
 </LinearLayout >

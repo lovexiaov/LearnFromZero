@@ -5,4 +5,5 @@
     <string name="show_progress_dialog">Show ProgressDialog</string>
     <string name="show_table_layout">Show TableLayout</string>
     <string name="show_custom_view">Show Custom View</string>
+    <string name="show_list_view">Show List View</string>
 </resources >

@@ -21,6 +21,7 @@
         <activity android:name=".AtyEasyStart" />
         <activity android:name=".AtyTableLayout" />
         <activity android:name=".AtyCustomView" />
+        <activity android:name=".AtyListView" />
     </application >
 
 </manifest >
