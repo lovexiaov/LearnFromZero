@@ -59,5 +59,11 @@
         android:text="@string/start_receiver"
         android:id="@+id/btn_start_receiver"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_custom_broadcast"
+        android:id="@+id/btn_send_custom_broadcast"
+        />
 
 </LinearLayout >

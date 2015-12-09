@@ -7,14 +7,14 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 
-import com.lovexiaov.learnfromzero.receiver.RecNetChange;
+import com.lovexiaov.learnfromzero.receiver.RecvNetChange;
 import com.lovexiaov.learnfromzero.tools.ActivityController;
 
 
 public class AtyMain extends AtyBase implements View.OnClickListener {
 
     private IntentFilter filter;
-    private RecNetChange recNetChange;
+    private RecvNetChange recvNetChange;
 
 
     @Override
@@ -41,6 +41,7 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
              .setOnClickListener(this);
         super.findViewById(R.id.btn_start_receiver)
              .setOnClickListener(this);
+        super.findViewById(R.id.btn_send_custom_broadcast).setOnClickListener(this);
     }
 
 
@@ -48,7 +49,7 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
         ActivityController.removeActivity(this);
-        if (recNetChange != null) unregisterReceiver(recNetChange);
+        if (recvNetChange != null) unregisterReceiver(recvNetChange);
     }
 
     @Override
@@ -84,7 +85,10 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
 
             case R.id.btn_start_receiver:
                 registerNetChangeReceiver();
+                break;
 
+            case R.id.btn_send_custom_broadcast:
+                sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"));
                 break;
 
             default:
@@ -95,11 +99,11 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
     }
 
     private void registerNetChangeReceiver() {
-        recNetChange = new RecNetChange();
+        recvNetChange = new RecvNetChange();
 
         filter = new IntentFilter();
         filter.addAction("android.net.conn.CONNECTIVITY_CHANGE");
-        registerReceiver(recNetChange, filter);
+        registerReceiver(recvNetChange, filter);
     }
 
     private void showFragmentAty() {

@@ -1,10 +1,14 @@
 <resources >
     <string name="app_name" >LearnFromZero</string >
-    <string name="start_aty_easy_start">Start AtyEasyStart</string>
-    <string name="show_alert_dialog">Show AlertDialog</string>
-    <string name="show_progress_dialog">Show ProgressDialog</string>
-    <string name="show_table_layout">Show TableLayout</string>
-    <string name="show_custom_view">Show Custom View</string>
-    <string name="show_list_view">Show ListView</string>
-    <string name="show_fragment">Show Fragment</string><string name="test_message" >Test Message</string ><string name="switcher" >Switcher</string ><string name="start_receiver" >start receiver</string >
+    <string name="start_aty_easy_start" >Start AtyEasyStart</string >
+    <string name="show_alert_dialog" >Show AlertDialog</string >
+    <string name="show_progress_dialog" >Show ProgressDialog</string >
+    <string name="show_table_layout" >Show TableLayout</string >
+    <string name="show_custom_view" >Show Custom View</string >
+    <string name="show_list_view" >Show ListView</string >
+    <string name="show_fragment" >Show Fragment</string >
+    <string name="test_message" >Test Message</string >
+    <string name="switcher" >Switcher</string >
+    <string name="start_receiver" >start receiver</string >
+    <string name="send_custom_broadcast" >send a custom broadcast</string >
 </resources >

@@ -11,7 +11,7 @@ import com.lovexiaov.learnfromzero.AtyMain;
  * Receiver to listen device boot complate
  * Created by lovexiaov on 15/12/9.
  */
-public class RecBootComplete extends BroadcastReceiver {
+public class RecvBootComplete extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Intent startIntent = new Intent(context, AtyMain.class);

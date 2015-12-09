@@ -11,7 +11,7 @@ import android.widget.Toast;
  * class for use BroadcastReceiver
  * Created by lovexiaov on 15/12/9.
  */
-public class RecNetChange extends BroadcastReceiver {
+public class RecvNetChange extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
 

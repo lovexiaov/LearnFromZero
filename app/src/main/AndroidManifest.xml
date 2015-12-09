@@ -26,11 +26,19 @@
         <activity android:name=".AtyListView" />
         <activity android:name=".AtyFragment" />
 
-        <receiver android:name=".receiver.RecBootComplete" >
+        <receiver android:name=".receiver.RecvBootComplete" >
             <intent-filter >
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter >
         </receiver >
+
+        <receiver android:name=".receiver.RecvCustomBroadcast">
+            <intent-filter>
+                <action android:name="com.lovexiaov.learnfromzero.ACTION_CUSTOM" />
+
+            </intent-filter>
+
+        </receiver>
     </application >
 
 </manifest >
