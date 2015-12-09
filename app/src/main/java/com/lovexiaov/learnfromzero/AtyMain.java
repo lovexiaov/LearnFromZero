@@ -41,7 +41,8 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
              .setOnClickListener(this);
         super.findViewById(R.id.btn_start_receiver)
              .setOnClickListener(this);
-        super.findViewById(R.id.btn_send_custom_broadcast).setOnClickListener(this);
+        super.findViewById(R.id.btn_send_custom_broadcast)
+             .setOnClickListener(this);
     }
 
 
@@ -88,7 +89,8 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
                 break;
 
             case R.id.btn_send_custom_broadcast:
-                sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"));
+//                sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"));
+                sendOrderedBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"), null);
                 break;
 
             default:

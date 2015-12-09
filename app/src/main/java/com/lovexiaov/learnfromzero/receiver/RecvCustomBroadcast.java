@@ -14,5 +14,6 @@ public class RecvCustomBroadcast extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Toast.makeText(context, "I have received a custom broadcast(~.~)", Toast.LENGTH_SHORT)
              .show();
+        abortBroadcast(); // abort ordered broadcast
     }
 }

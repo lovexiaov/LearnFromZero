@@ -33,7 +33,7 @@
         </receiver >
 
         <receiver android:name=".receiver.RecvCustomBroadcast">
-            <intent-filter>
+            <intent-filter android:priority="100">
                 <action android:name="com.lovexiaov.learnfromzero.ACTION_CUSTOM" />
 
             </intent-filter>
