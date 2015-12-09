@@ -5,16 +5,28 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v4.content.LocalBroadcastManager;
+import android.widget.ListView;
 
+import com.lovexiaov.learnfromzero.entity.Func;
+import com.lovexiaov.learnfromzero.receiver.RecvLocal;
 import com.lovexiaov.learnfromzero.receiver.RecvNetChange;
-import com.lovexiaov.learnfromzero.tools.ActivityController;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class AtyMain extends AtyBase implements View.OnClickListener {
+public class AtyMain extends AtyBase {
+
+    private ListView list_func;
+    private AdapterFuncList funcAdapter;
+    private List<Func> funcs;
 
     private IntentFilter filter;
     private RecvNetChange recvNetChange;
+
+
+    private LocalBroadcastManager localManager;
+    private RecvLocal recvLocal;
 
 
     @Override
@@ -23,81 +35,116 @@ public class AtyMain extends AtyBase implements View.OnClickListener {
         // hide title bar
 //        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.aty_main);
-        ActivityController.addActivity(this);
 
-        super.findViewById(R.id.btn_start)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_alert_dialog)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_progress_dialog)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_table_layout)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_custom_view)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_list_view)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_show_fragment)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_start_receiver)
-             .setOnClickListener(this);
-        super.findViewById(R.id.btn_send_custom_broadcast)
-             .setOnClickListener(this);
+        initData();
+
+        list_func = (ListView) super.findViewById(R.id.list_func);
+        funcAdapter = new AdapterFuncList(this, R.layout.list_func, funcs);
+        list_func.setAdapter(funcAdapter);
+
+        localManager = LocalBroadcastManager.getInstance(this);
+        recvLocal = new RecvLocal();
+        IntentFilter filter = new IntentFilter("com.lovexiaov.learnfromzero.ACTION_LOCAL_CUSTOM");
+        localManager.registerReceiver(recvLocal, filter);
+    }
+
+    private void initData() {
+        funcs = new ArrayList<>();
+        Func easyStart = new Func(getString(R.string.start_aty_easy_start), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                AtyEasyStart.actionStart(AtyMain.this, "lovexiaov", "ITer");
+
+            }
+        });
+        Func showAlert = new Func(getString(R.string.show_alert_dialog), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                showAlert();
+            }
+        });
+
+        Func showPBDialog = new Func(getString(R.string.show_progress_dialog), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                showProgressDialog();
+            }
+        });
+
+        Func showTableLayout = new Func(getString(R.string.show_table_layout), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                showTableLayoutAty();
+            }
+        });
+
+        Func showCustomView = new Func(getString(R.string.show_custom_view), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                showCustomViewAty();
+            }
+        });
+
+        Func showListView = new Func(getString(R.string.show_list_view), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                showListViewAty();
+            }
+        });
+
+        Func showFragment = new Func(getString(R.string.show_fragment), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                showFragmentAty();
+            }
+        });
+
+        Func startReceiver = new Func(getString(R.string.start_receiver), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                registerNetChangeReceiver();
+            }
+        });
+
+        Func sendCustomBroadcast = new Func(getString(R.string.send_custom_broadcast), new Func.OnClickListener() {
+            @Override
+            public void action() {
+//                sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"));
+                sendOrderedBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"), null);
+            }
+        });
+
+        Func sendLocalBroadcast = new Func(getString(R.string.use_local_broadcast), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                sendLocalBroadcast();
+            }
+        });
+        funcs.add(easyStart);
+        funcs.add(showAlert);
+        funcs.add(showPBDialog);
+        funcs.add(showCustomView);
+        funcs.add(showListView);
+        funcs.add(showFragment);
+        funcs.add(showTableLayout);
+        funcs.add(startReceiver);
+        funcs.add(sendCustomBroadcast);
+        funcs.add(sendLocalBroadcast);
+
     }
 
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityController.removeActivity(this);
         if (recvNetChange != null) unregisterReceiver(recvNetChange);
+
+        localManager.unregisterReceiver(recvLocal);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_start:
-                AtyEasyStart.actionStart(this, "lovexiaov", "ITer");
-                break;
 
-            case R.id.btn_show_alert_dialog:
-                showAlert();
-                break;
-
-            case R.id.btn_show_progress_dialog:
-                showProgressDialog();
-                break;
-
-            case R.id.btn_show_table_layout:
-                showTableLayoutAty();
-                break;
-
-            case R.id.btn_show_custom_view:
-                showCustomViewAty();
-                break;
-
-            case R.id.btn_show_list_view:
-                showListViewAty();
-                break;
-
-            case R.id.btn_show_fragment:
-                showFragmentAty();
-                break;
-
-            case R.id.btn_start_receiver:
-                registerNetChangeReceiver();
-                break;
-
-            case R.id.btn_send_custom_broadcast:
-//                sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"));
-                sendOrderedBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_CUSTOM"), null);
-                break;
-
-            default:
-
-                break;
-        }
-
+    private void sendLocalBroadcast() {
+        localManager.sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_LOCAL_CUSTOM"));
     }
 
     private void registerNetChangeReceiver() {
