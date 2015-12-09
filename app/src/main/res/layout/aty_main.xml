@@ -53,5 +53,11 @@
         android:text="@string/show_fragment"
         android:id="@+id/btn_show_fragment"
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_receiver"
+        android:id="@+id/btn_start_receiver"
+        />
 
 </LinearLayout >

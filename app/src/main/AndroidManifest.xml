@@ -3,6 +3,8 @@
     package="com.lovexiaov.learnfromzero"
     xmlns:android="http://schemas.android.com/apk/res/android"
     >
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +25,12 @@
         <activity android:name=".AtyCustomView" />
         <activity android:name=".AtyListView" />
         <activity android:name=".AtyFragment" />
+
+        <receiver android:name=".receiver.RecBootComplete" >
+            <intent-filter >
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter >
+        </receiver >
     </application >
 
 </manifest >
