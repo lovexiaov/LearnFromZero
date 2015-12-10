@@ -14,7 +14,10 @@ import com.lovexiaov.learnfromzero.receiver.RecvLocal;
 import com.lovexiaov.learnfromzero.receiver.RecvNetChange;
 import com.lovexiaov.learnfromzero.tools.Closer;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -160,6 +163,29 @@ public class AtyMain extends AtyBase {
             }
         });
 
+        Func read_data_from_file = new Func(getString(R.string.read_data_from_file), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                FileInputStream fileInputStream = null;
+                BufferedReader fileReader = null;
+                try {
+                    fileInputStream = openFileInput("test.txt");
+                    fileReader = new BufferedReader(new InputStreamReader(fileInputStream));
+                    String line = "";
+
+                    while ((line = fileReader.readLine()) != null) {
+                        Toast.makeText(AtyMain.this, line, Toast.LENGTH_SHORT).show();
+                    }
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    Closer.close(fileInputStream);
+                    Closer.close(fileReader);
+                }
+            }
+        });
+
         funcs.add(easyStart);
         funcs.add(showAlert);
         funcs.add(showPBDialog);
@@ -173,6 +199,7 @@ public class AtyMain extends AtyBase {
         funcs.add(add_new_item);
         funcs.add(force_offline);
         funcs.add(storeDataToFile);
+        funcs.add(read_data_from_file);
     }
 
 
