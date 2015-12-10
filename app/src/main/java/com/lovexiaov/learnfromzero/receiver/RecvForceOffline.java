@@ -31,7 +31,7 @@ public class RecvForceOffline extends BroadcastReceiver {
             }
         });
 
-        // request permission of system alert
+        // request to show a system alert
         // need permission: android.permission.SYSTEM_ALERT_WINDOW
         AlertDialog dialog = builder.create();
         dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);

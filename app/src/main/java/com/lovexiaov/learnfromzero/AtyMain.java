@@ -12,7 +12,9 @@ import android.widget.Toast;
 import com.lovexiaov.learnfromzero.entity.Func;
 import com.lovexiaov.learnfromzero.receiver.RecvLocal;
 import com.lovexiaov.learnfromzero.receiver.RecvNetChange;
+import com.lovexiaov.learnfromzero.tools.Closer;
 
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -143,6 +145,21 @@ public class AtyMain extends AtyBase {
             }
         });
 
+        Func storeDataToFile = new Func(getString(R.string.stored_data_to_file), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                FileOutputStream fileOutputStream = null;
+                try {
+                    fileOutputStream = openFileOutput("test.txt", MODE_PRIVATE);
+                    fileOutputStream.write("Hello World!".getBytes());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    Closer.close(fileOutputStream);
+                }
+            }
+        });
+
         funcs.add(easyStart);
         funcs.add(showAlert);
         funcs.add(showPBDialog);
@@ -155,7 +172,7 @@ public class AtyMain extends AtyBase {
         funcs.add(sendLocalBroadcast);
         funcs.add(add_new_item);
         funcs.add(force_offline);
-
+        funcs.add(storeDataToFile);
     }
 
 
