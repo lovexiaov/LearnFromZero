@@ -7,6 +7,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.lovexiaov.learnfromzero.entity.Func;
 import com.lovexiaov.learnfromzero.receiver.RecvLocal;
@@ -120,6 +121,21 @@ public class AtyMain extends AtyBase {
                 sendLocalBroadcast();
             }
         });
+
+        Func add_new_item = new Func(getString(R.string.add_new_item), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                Func test = new Func(getString(R.string.test_item), new Func.OnClickListener() {
+                    @Override
+                    public void action() {
+                        Toast.makeText(AtyMain.this, "I was added dynamic ~~", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                funcs.add(test);
+                funcAdapter.refresh(funcs);
+            }
+        });
+
         funcs.add(easyStart);
         funcs.add(showAlert);
         funcs.add(showPBDialog);
@@ -130,6 +146,7 @@ public class AtyMain extends AtyBase {
         funcs.add(startReceiver);
         funcs.add(sendCustomBroadcast);
         funcs.add(sendLocalBroadcast);
+        funcs.add(add_new_item);
 
     }
 
