@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
 import android.widget.ListView;
@@ -171,7 +172,7 @@ public class AtyMain extends AtyBase {
                 try {
                     fileInputStream = openFileInput("test.txt");
                     fileReader = new BufferedReader(new InputStreamReader(fileInputStream));
-                    String line = "";
+                    String line;
 
                     while ((line = fileReader.readLine()) != null) {
                         Toast.makeText(AtyMain.this, line, Toast.LENGTH_SHORT).show();
@@ -183,6 +184,28 @@ public class AtyMain extends AtyBase {
                     Closer.close(fileInputStream);
                     Closer.close(fileReader);
                 }
+            }
+        });
+
+        Func storeDataToSP = new Func(getString(R.string.stored_data_to_sp), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                // name is current activity name
+//                SharedPreferences sp = getPreferences(MODE_PRIVATE);
+                // name is app's package name
+//                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(AtyMain.this);
+                SharedPreferences sp = getSharedPreferences("custom", MODE_PRIVATE);
+//                sp.edit().putString("hello", "Hello World!").commit();
+                sp.edit().putString("hello", "Hello World!").apply();
+            }
+        });
+
+        Func readDataFromSP = new Func(getString(R.string.read_data_from_sp), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                SharedPreferences sp = getSharedPreferences("custom", MODE_PRIVATE);
+                Toast.makeText(AtyMain.this, sp.getString("hello","default"), Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -200,6 +223,8 @@ public class AtyMain extends AtyBase {
         funcs.add(force_offline);
         funcs.add(storeDataToFile);
         funcs.add(read_data_from_file);
+        funcs.add(storeDataToSP);
+        funcs.add(readDataFromSP);
     }
 
 
