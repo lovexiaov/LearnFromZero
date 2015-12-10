@@ -5,6 +5,7 @@
     >
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:allowBackup="true"
@@ -32,13 +33,19 @@
             </intent-filter >
         </receiver >
 
-        <receiver android:name=".receiver.RecvCustomBroadcast">
-            <intent-filter android:priority="100">
+        <receiver android:name=".receiver.RecvCustomBroadcast" >
+            <intent-filter android:priority="100" >
                 <action android:name="com.lovexiaov.learnfromzero.ACTION_CUSTOM" />
 
-            </intent-filter>
+            </intent-filter >
 
-        </receiver>
+        </receiver >
+
+        <receiver android:name=".receiver.RecvForceOffline" >
+            <intent-filter >
+                <action android:name="com.lovexiaov.learnfromzero.ACTION_FORCE_OFFLINE" />
+            </intent-filter >
+        </receiver >
     </application >
 
 </manifest >

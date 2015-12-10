@@ -136,6 +136,13 @@ public class AtyMain extends AtyBase {
             }
         });
 
+        Func force_offline = new Func(getString(R.string.force_offline), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                sendBroadcast(new Intent("com.lovexiaov.learnfromzero.ACTION_FORCE_OFFLINE"));
+            }
+        });
+
         funcs.add(easyStart);
         funcs.add(showAlert);
         funcs.add(showPBDialog);
@@ -147,6 +154,7 @@ public class AtyMain extends AtyBase {
         funcs.add(sendCustomBroadcast);
         funcs.add(sendLocalBroadcast);
         funcs.add(add_new_item);
+        funcs.add(force_offline);
 
     }
 
