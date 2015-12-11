@@ -26,6 +26,7 @@
         <activity android:name=".AtyCustomView" />
         <activity android:name=".AtyListView" />
         <activity android:name=".AtyFragment" />
+        <activity android:name=".AtyUseDatabase" />
 
         <receiver android:name=".receiver.RecvBootComplete" >
             <intent-filter >

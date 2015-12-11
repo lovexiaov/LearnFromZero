@@ -209,6 +209,13 @@ public class AtyMain extends AtyBase {
             }
         });
 
+        Func useDataBase = new Func(getString(R.string.use_database), new Func.OnClickListener() {
+            @Override
+            public void action() {
+                AtyUseDatabase.actionStart(AtyMain.this);
+            }
+        });
+
         funcs.add(easyStart);
         funcs.add(showAlert);
         funcs.add(showPBDialog);
@@ -225,6 +232,7 @@ public class AtyMain extends AtyBase {
         funcs.add(read_data_from_file);
         funcs.add(storeDataToSP);
         funcs.add(readDataFromSP);
+        funcs.add(useDataBase);
     }
 
 
