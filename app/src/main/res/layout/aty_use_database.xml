@@ -33,4 +33,12 @@
         android:onClick="update"
         />
 
+    <Button
+        android:id="@+id/btn_transaction"
+        android:text="@string/use_transaction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="useTransaction"
+        />
+
 </LinearLayout >

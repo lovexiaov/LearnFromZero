@@ -71,4 +71,29 @@ public class AtyUseDatabase extends AtyBase {
         database.close();
         Toast.makeText(AtyUseDatabase.this, "total: " + count, Toast.LENGTH_SHORT).show();
     }
+
+    public void useTransaction(View view) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        database.beginTransaction();
+        try {
+            database.delete(MyDatabaseHelper.TABLE_BOOK, null, null);
+            if (false) {
+                throw new RuntimeException();
+            }
+
+            ContentValues values = new ContentValues();
+            values.put(MyDatabaseHelper.BOOK_NAME, "WTF");
+            values.put(MyDatabaseHelper.BOOK_AUTHOR, "lovexiaov");
+
+            database.insert(MyDatabaseHelper.TABLE_BOOK,null,values);
+            database.setTransactionSuccessful();
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        } finally {
+            database.endTransaction();
+            database.close();
+        }
+
+
+    }
 }
