@@ -39,7 +39,14 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+        switch (oldVersion) {
+            case 1:
+                // do modify to update to version 2
+            case 2:
+                // do modify to update to version 3
+            // ...
+            // no break...
+        }
     }
 }
