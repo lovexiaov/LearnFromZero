@@ -40,8 +40,8 @@ public class AdapterFuncList extends ArrayAdapter {
             btn_show_func = (Button) convertView.getTag();
         } else {
             convertView = View.inflate(context, R.layout.list_func, null);
-            convertView.setTag(convertView.findViewById(R.id.btn_show_func));
             btn_show_func = (Button) convertView.findViewById(R.id.btn_show_func);
+            convertView.setTag(btn_show_func);
         }
 
         btn_show_func.setText(funcs.get(position).getName());
