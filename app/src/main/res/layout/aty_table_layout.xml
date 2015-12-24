@@ -14,6 +14,7 @@
             android:id="@+id/et_name"
             android:hint="Enter your name"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             />
 
     </TableRow >
@@ -27,6 +28,7 @@
             android:id="@+id/et_passwd"
             android:hint="Enter your password"
             android:layout_height="wrap_content"
+            android:singleLine="true"
             />
 
     </TableRow >

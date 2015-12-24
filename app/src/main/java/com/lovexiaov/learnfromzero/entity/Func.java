@@ -6,7 +6,7 @@ package com.lovexiaov.learnfromzero.entity;
  */
 public class Func {
     private OnClickListener onClickListener;
-    private String name;
+    private String          name;
 
     public Func(String name, OnClickListener onClickListener) {
         this.name = name;

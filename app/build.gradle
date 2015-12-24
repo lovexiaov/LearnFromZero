@@ -1,8 +1,37 @@
 apply plugin: 'com.android.application'
 
+// 获取最后一次 git 提交的 id
+def getLastCommitId() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
+// 创建 Properties 对象，并从文件中加载属性
+def Properties projectProperties = new Properties()
+def propsFile = file('../gradle.properties')
+
+if (propsFile.exists() && propsFile.canRead()) {
+
+    projectProperties.load(new FileInputStream(propsFile))
+    // auto increment versionCode when there is
+    // some change sine last build
+    def runTasks = gradle.startParameter.taskNames
+    def currentVersion = projectProperties['VERSION_CODE'].toInteger()
+
+    if ('aR' in runTasks || 'assembleRelease' in runTasks) {
+        if (!projectProperties['COMMIT_ID'].equals(getLastCommitId())) {
+            currentVersion++
+            projectProperties['COMMIT_ID'] = getLastCommitId()
+            projectProperties['VERSION_CODE'] = currentVersion.toString()
+        }
+
+        projectProperties.store(propsFile.newWriter(), null)
+    }
+
+}
+
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '23.0.2'
 
     defaultConfig {
         applicationId "com.lovexiaov.learnfromzero"
