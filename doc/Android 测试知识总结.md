@@ -23,7 +23,6 @@ I/ActivityManager(  723): START u0 {act=android.intent.action.MAIN cat=[android.
 
 可以看到，这又是一种获取应用包名的方法。
 
-
 ## Android Monkey 的使用
 
 ### 1. Android Monkey 参数
